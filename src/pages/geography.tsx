@@ -1,9 +1,7 @@
-import React from "react";
-
 type Props = {};
 
-function geography({}: Props) {
+function Geography({}: Props) {
 	return <div>geography</div>;
 }
 
-export default geography;
+export default Geography;

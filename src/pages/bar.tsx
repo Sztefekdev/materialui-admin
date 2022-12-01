@@ -1,9 +1,7 @@
-import React from "react";
-
 type Props = {};
 
-function bar({}: Props) {
+function Bar({}: Props) {
 	return <div>bar</div>;
 }
 
-export default bar;
+export default Bar;

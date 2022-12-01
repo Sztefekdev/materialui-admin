@@ -1,9 +1,7 @@
-import React from "react";
-
 type Props = {};
 
-function faq({}: Props) {
+function Faq({}: Props) {
 	return <div>faq</div>;
 }
 
-export default faq;
+export default Faq;

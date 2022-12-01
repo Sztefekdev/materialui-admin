@@ -1,9 +1,7 @@
-import React from "react";
-
 type Props = {};
 
-function line({}: Props) {
+function Line({}: Props) {
 	return <div>line</div>;
 }
 
-export default line;
+export default Line;

@@ -1,9 +1,7 @@
-import React from "react";
-
 type Props = {};
 
-function pie({}: Props) {
+function Pie({}: Props) {
 	return <div>pie</div>;
 }
 
-export default pie;
+export default Pie;
