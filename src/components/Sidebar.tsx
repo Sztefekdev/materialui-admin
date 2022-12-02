@@ -17,6 +17,7 @@ import { tokens } from "../theme";
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type ItemProps = {
 	title: string;
@@ -30,16 +31,18 @@ const Item = ({ title, href, icon, selected, setSelected }: ItemProps) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 
+	const moduleName: string = href.substring(1).split("/")[0];
+
 	return (
 		<MenuItem
-			active={selected === title}
+			active={selected === moduleName}
 			style={{
 				color:
-					selected === title
+					selected === moduleName
 						? colors.blueAccent[400]
 						: colors.grey[100],
 			}}
-			onClick={() => setSelected(title)}
+			onClick={() => setSelected(moduleName)}
 			icon={icon}
 		>
 			<Typography>{title}</Typography>
@@ -54,7 +57,9 @@ function Sidebar({}: Props) {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [isCollapsed, setIsCollapsed] = useState(true);
-	const [selected, setSelected] = useState("Dashboard");
+
+	const route: string = useRouter().route.substring(1).split("/")[0];
+	const [selected, setSelected] = useState(route);
 
 	return (
 		<Box
@@ -74,7 +79,7 @@ function Sidebar({}: Props) {
 				"& .pro-menu-item.active": {
 					color: "#6870fa",
 				},
-				height: "100vh"
+				height: "100vh",
 			}}
 		>
 			<ProSidebar collapsed={isCollapsed}>
