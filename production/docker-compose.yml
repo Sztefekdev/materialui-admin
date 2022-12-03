@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  materialui-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      image: materialui-admin
+    restart: always
+    ports:
+      - 25001:3000

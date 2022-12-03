@@ -32,3 +32,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Deploy from AWS to VPS with Docker
+1) Download from AWS - see `production/` under script `make release`, where it is uploaded
+2) Unzip zip file and `cd` to the folder
+3) Run `docker compose -f docker-compose.yml up -d --no-deps --build`
+4) Set Nginx to access ports from `docker-compose.yml`
+
+### Deploy Info
+- it'll rebuild image and recreate container
+- building will copy `./next-app` into `/app` directory in image
+- it may make about 4s of unavailability - it'll cause `ERR_EMPTY_RESPONSE`, but browser will reload automatically after some seconds

@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  NodeDeploy:
+    runs-on: ubuntu-latest
+    container: sztefek/nextjs-build-image:latest
+    steps:
+
+      # actions/checkout needs to be everytime
+      - uses: actions/checkout@v2
+
+      # run node deploy
+      - name: Run Node deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          make -C production/ package
+          make -C production/ release
+          echo '------- production'
+          ls production
+          echo '------- target'
+          ls production/target
