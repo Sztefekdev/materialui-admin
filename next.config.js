@@ -3,6 +3,9 @@ const nextConfig = {
 	output: 'standalone',
 	reactStrictMode: true,
 	swcMinify: true,
+	compiler: {
+		styledComponents: true,
+	},
 };
 
 const withTM = require("next-transpile-modules")([
@@ -16,4 +19,9 @@ const withTM = require("next-transpile-modules")([
 	"@fullcalendar/list",
 ]);
 
-module.exports = withTM(nextConfig);
+// you can analyze bundles by running 'ANALYZE=true yarn build'
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer(withTM(nextConfig));

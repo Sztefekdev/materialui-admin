@@ -285,7 +285,7 @@ export default function Home() {
 						alignItems="center"
 						mt="25px"
 					>
-						<ProgressCircle size={125} />
+						<ProgressCircle progress={0.48325} size={125} />
 						<Typography
 							variant="h5"
 							color={colors.greenAccent[500]}

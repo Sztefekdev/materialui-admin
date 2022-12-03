@@ -5,9 +5,9 @@ import { ColorModeContext, useMode } from "../theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "../components/Topbar";
 import Sidebar from "../components/Sidebar";
-import "@fullcalendar/common/main.css";
-import "@fullcalendar/daygrid/main.css";
-import "@fullcalendar/timegrid/main.css";
+// import "@fullcalendar/common/main.css";
+// import "@fullcalendar/daygrid/main.css";
+// import "@fullcalendar/timegrid/main.css";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [theme, colorMode] = useMode();
