@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      image: materialui-admin
     restart: always
     ports:
       - 25001:3000
