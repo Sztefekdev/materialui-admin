@@ -8,9 +8,7 @@ function Line({}: Props) {
 	return (
 		<Box m="20px">
 			<Header title="Line Chart" subtitle="Simple Line Chart" />
-			<Box height="75vh">
-				<LineChart />
-			</Box>
+			<LineChart height="75vh" />
 		</Box>
 	);
 }

@@ -32,3 +32,8 @@ body,
 ::-webkit-scrollbar-track:hover {
 	background: #555;
 }
+
+.sidebar-change-reload-hide {
+	display: none !important; /* display none is faster */
+	/* visibility: hidden !important; */
+}

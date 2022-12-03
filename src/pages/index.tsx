@@ -197,9 +197,7 @@ export default function Home() {
 							</IconButton>
 						</Box>
 					</Box>
-					<Box height="250px" mt="-20px">
-						<LineChart isDashboard={true} />
-					</Box>
+					<LineChart isDashboard={true} height="250px" mt="-20px" className="sidebar-change-reload" />
 				</Box>
 
 				{/* transactions */}
@@ -312,9 +310,7 @@ export default function Home() {
 					>
 						Sales quantity
 					</Typography>
-					<Box height="250px" mt="-20px">
-						<BarChart isDashboard={true} />
-					</Box>
+					<BarChart isDashboard={true} height="250px" mt="-20px" />
 				</Box>
 				<Box
 					gridColumn="span 4"
@@ -331,9 +327,7 @@ export default function Home() {
 					>
 						Geography based traffic
 					</Typography>
-					<Box height="200px">
-						<GeographyChart isDashboard={true} />
-					</Box>
+					<GeographyChart isDashboard={true} height="200px" />
 				</Box>
 			</Box>
 		</Box>

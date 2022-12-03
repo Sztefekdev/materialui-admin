@@ -32,25 +32,25 @@ function Topbar({}: Props) {
 					}}
 					placeholder="Search"
 				/>
-				<IconButton type="button" sx={{ p: 1 }}>
+				<IconButton type="button" sx={{ p: 1 }} aria-label="Search">
 					<SearchOutlinedIcon />
 				</IconButton>
 			</Box>
 			<Box display="flex">
-				<IconButton onClick={colorMode.toggleColorMode}>
+				<IconButton onClick={colorMode.toggleColorMode} aria-label="Dark / light mode">
 					{theme?.palette?.mode === "dark" ? (
 						<DarkModeOutlinedIcon />
 					) : (
 						<LightModeOutlinedIcon />
 					)}
 				</IconButton>
-				<IconButton>
+				<IconButton aria-label="Notifications">
 					<NotificationsOutlinedIcon />
 				</IconButton>
-				<IconButton>
+				<IconButton aria-label="Settings">
 					<SettingsOutlinedIcon />
 				</IconButton>
-				<IconButton>
+				<IconButton aria-label="Person">
 					<PersonOutlinedIcon />
 				</IconButton>
 			</Box>

@@ -11,13 +11,11 @@ function Geography({}: Props) {
 	return (
 		<Box m="20px">
 			<Header title="Geography Chart" subtitle="Simple Geography Chart" />
-			<Box
+			<GeographyChart
 				height="75vh"
 				border={`1px solid ${colors.grey[100]}`}
 				borderRadius="4px"
-			>
-				<GeographyChart />
-			</Box>
+			/>
 		</Box>
 	);
 }

@@ -46,7 +46,7 @@ const Item = ({ title, href, icon, selected, setSelected }: ItemProps) => {
 			icon={icon}
 		>
 			<Typography>{title}</Typography>
-			<Link href={href} />
+			<Link href={href} aria-label="Menu item" />
 		</MenuItem>
 	);
 };
@@ -60,6 +60,29 @@ function Sidebar({}: Props) {
 
 	const route: string = useRouter().route.substring(1).split("/")[0];
 	const [selected, setSelected] = useState(route);
+
+	const changeIsCollapse = (isCollapsedParam: boolean) => {
+		const elements = document.getElementsByClassName('sidebar-change-reload');
+		const elementsLength = elements.length;
+		const cntAttrName = 'data-sidebar-change-reload-cnt';
+		for (let i = 0; i < elementsLength; i++)
+		{
+			const element = elements[i];
+			element.classList.add('sidebar-change-reload-hide');
+			const attrCnt = parseInt((element.hasAttribute(cntAttrName)) ? (element.getAttribute(cntAttrName) ?? '0') : '0');
+			element.setAttribute(cntAttrName, (attrCnt + 1).toString());
+
+			setTimeout(() => {
+				const attrCnt = parseInt((element.hasAttribute(cntAttrName)) ? (element.getAttribute(cntAttrName) ?? '0') : '0');
+				const newAttrCnt = attrCnt - 1;
+				element.setAttribute(cntAttrName, newAttrCnt.toString());
+				if (newAttrCnt <= 0) {
+					element.classList.remove('sidebar-change-reload-hide');
+				}
+			}, 300); // 300ms is default duration of react-pro-sidebar
+		}
+		setIsCollapsed(isCollapsedParam);
+	};
 
 	return (
 		<Box
@@ -85,7 +108,7 @@ function Sidebar({}: Props) {
 			<ProSidebar collapsed={isCollapsed}>
 				<Menu iconShape="square">
 					<MenuItem
-						onClick={() => setIsCollapsed(!isCollapsed)}
+						onClick={() => changeIsCollapse(!isCollapsed)}
 						icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
 						style={{
 							margin: "10px 0 20px 0",
@@ -106,7 +129,8 @@ function Sidebar({}: Props) {
 									ADMINIS
 								</Typography>
 								<IconButton
-									onClick={() => setIsCollapsed(!isCollapsed)}
+									onClick={() => changeIsCollapse(!isCollapsed)}
+									aria-label="Expand / collapse sidebar"
 								>
 									<MenuOutlinedIcon />
 								</IconButton>
@@ -142,7 +166,7 @@ function Sidebar({}: Props) {
 										m: "10px 0 0 0",
 									}}
 								>
-									Pavel Sztefek
+									Name Surname
 								</Typography>
 								<Typography
 									variant="h5"
